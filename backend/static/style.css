@@ -1,0 +1,426 @@
+/* ==========================================
+   USED CAR PRICE PREDICTOR
+   ========================================== */
+
+/* ---------- Google Font ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* ---------- Reset ---------- */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+/* ---------- Body ---------- */
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+        radial-gradient(circle at top right,
+        rgba(193,18,31,.18),
+        transparent 35%),
+
+        radial-gradient(circle at bottom left,
+        rgba(214,40,57,.12),
+        transparent 40%),
+
+        #0f1117;
+
+    color:white;
+
+    min-height:100vh;
+
+}
+
+
+/* ---------- Main Page ---------- */
+
+.page{
+
+    width:92%;
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:50px 0;
+
+}
+
+
+/* ---------- Hero ---------- */
+
+.hero{
+
+    text-align:center;
+
+    margin-bottom:45px;
+
+}
+
+.hero h1{
+
+    font-size:3.3rem;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+    letter-spacing:1px;
+}
+
+.hero p{
+
+    color:#b5b5b5;
+
+    font-size:1.1rem;
+   
+    max-width:650px;
+
+    margin:auto;
+}
+
+
+/* ---------- Layout ---------- */
+
+.content{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:35px;
+
+    align-items:start;
+
+}
+
+
+/* ---------- Cards ---------- */
+
+.form-card,
+.result-card{
+
+    background:rgba(24,28,36,.82);
+
+    backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.35);
+
+    border:1px solid rgba(255,255,255,.05);
+    transition: .35s ease;
+
+}
+
+.form-card:hover,
+.result-card:hover{
+
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.45);
+
+}
+
+
+.form-card h2,
+.result-card h2{
+
+    margin-bottom:25px;
+
+    font-size:1.8rem;
+
+}
+
+
+/* ---------- Labels ---------- */
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    margin-top:18px;
+
+    font-weight:500;
+
+}
+
+
+/* ---------- Inputs ---------- */
+
+input,
+select{
+
+    width:100%;
+
+    padding:13px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#262b35;
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+
+input:focus,
+select:focus{
+
+    border:1px solid #d62839;
+
+    background:#2d3440;
+
+    box-shadow:0 0 15px rgba(214,40,57,.35);
+
+}
+
+
+/* ---------- Select Options ---------- */
+
+option{
+
+    color:black;
+
+}
+
+
+/* ---------- Button ---------- */
+
+button{
+
+    width:100%;
+
+    margin-top:30px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#c1121f;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+button:hover{
+
+    background:#e63946;
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 10px 30px rgba(214,40,57,.35);
+
+}
+
+
+button:active{
+
+    transform:scale(.98);
+
+}
+
+
+/* ---------- Result Card ---------- */
+
+.price-box{
+
+    text-align:center;
+
+}
+
+
+.prediction-label{
+
+    color:#bbbbbb;
+
+    font-size:1rem;
+
+}
+
+
+#price{
+
+    font-size:3.5rem;
+
+    font-weight:700;
+
+    color:#ffffff;
+
+    letter-spacing:1px;
+
+    margin:18px 0;
+
+}
+
+.status{
+
+    color:#7ddc8a;
+
+    margin-bottom:20px;
+
+}
+
+
+/* ---------- Divider ---------- */
+
+.divider{
+
+    height:1px;
+
+    background:#2c3442;
+
+    margin:25px 0;
+
+}
+
+
+/* ---------- Vehicle Summary ---------- */
+
+.summary{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+
+}
+
+
+.summary p{
+
+    background:#232833;
+
+    padding:16px;
+
+    border-radius:12px;
+
+    line-height:1.8;
+
+    border-left:4px solid #c1121f;
+
+    transition:.3s;
+
+}
+
+.summary p:hover{
+
+    transform:translateX(4px);
+
+    background:#2a303c;
+
+}
+
+
+.summary strong{
+
+    color:#d62839;
+
+}
+
+
+/* ---------- Default Message ---------- */
+
+#carDetails{
+
+    color:#cccccc;
+
+    line-height:1.7;
+
+}
+
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:1000px){
+
+    .content{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .hero h1{
+
+        font-size:2.4rem;
+
+    }
+
+    #price{
+
+        font-size:2.2rem;
+
+    }
+
+    .summary{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+.form-card,
+.result-card{
+
+    animation:fadeUp .7s ease;
+}

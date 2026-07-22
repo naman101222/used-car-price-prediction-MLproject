@@ -2,35 +2,174 @@
 <html>
 
 <head>
+
     <title>Used Car Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-    <h1>🚗 Used Car Price Prediction</h1>
+     <div class="page">
 
-    <form action="/predict" method="POST">
+    <header class="hero">
 
-        <label>Brand</label>
-        <br>
-        <input type="text" name="brand">
-        <br><br>
+        <h1>Used Car Price Predictor</h1>
 
-        <label>Model Year</label>
-        <br>
-        <input type="number" name="model_year">
-        <br><br>
+        <p>
+            Estimate your vehicle's resale value using an XGBoost Machine Learning model.
+        </p>
 
-        <label>Kilometers Driven</label>
-        <br>
-        <input type="number" name="km_driven">
-        <br><br>
+    </header>
 
-        <button type="submit">
-            Predict Price
-        </button>
+    <div class="content">
 
-    </form>
+        <div class="form-card">
+
+            <h2>Vehicle Details</h2>
+
+   <form id="predictionForm">
+
+   <label for="brand">Brand</label><br>
+
+   <select name="brand" id="brand" required>
+    <option value="">-- Select Brand --</option>
+    {% for brand in brands %}
+        <option value="{{ brand }}">{{ brand }}</option>
+
+    {% endfor %}
+
+    </select>
+
+<br><br>
+    <label for="model">Model</label><br>
+
+<select id="model" name="model" required>
+
+    <option value="">-- Select Model --</option>
+
+</select>
+
+<br><br>
+
+    <label>Model Year</label><br>
+    <input type="number"  id="model_year" name="model_year" required><br><br>
+
+    <label for="fuel_type">Fuel Type</label><br>
+
+<select name="fuel_type" id="fuel_type" required>
+
+    <option value="">-- Select Fuel Type --</option>
+
+    {% for fuel in fuel_types %}
+        <option value="{{ fuel }}">{{ fuel }}</option>
+    {% endfor %}
+
+</select>
+
+<br><br>
+
+    <label for="transmission">Transmission</label><br>
+
+<select name="transmission" id="transmission" required>
+
+    <option value="">-- Select Transmission --</option>
+
+    {% for transmission in transmissions %}
+        <option value="{{ transmission }}">{{ transmission }}</option>
+    {% endfor %}
+
+</select>
+
+<br><br>
+
+    <label for="body_type">Body Type</label><br>
+
+<select name="body_type" id="body_type" required>
+
+    <option value="">-- Select Body Type --</option>
+
+    {% for body in body_types %}
+        <option value="{{ body }}">{{ body }}</option>
+    {% endfor %}
+
+</select>
+
+<br><br>
+
+    <label for="city_x">City</label><br>
+
+<select name="city_x" id="city_x" required>
+
+    <option value="">-- Select City --</option>
+
+    {% for city in cities %}
+        <option value="{{ city }}">{{ city }}</option>
+    {% endfor %}
+
+</select>
+
+<br><br>
+
+    <label for="owner_type">Owner Type</label><br>
+
+<select name="owner_type" id="owner_type" required>
+
+    <option value="">-- Select Owner Type --</option>
+
+    {% for owner in owners %}
+        <option value="{{ owner }}">{{ owner }}</option>
+    {% endfor %}
+
+</select>
+
+<br><br>
+
+    <label>KM Driven</label><br>
+    <input type="number" id="km_driven" name="km_driven" required><br><br>
+
+    <button type="submit">Predict Price</button>
+
+</form>
+
+  </div>
+
+        <div class="result-card">
+
+            <div class="price-box">
+
+                <p class="prediction-label">
+                    Estimated Price
+                </p>
+
+                <h1 id="price">
+
+                    ₹ -----
+
+                </h1>
+
+                <p class="status">
+
+                    Waiting for prediction...
+
+                </p>
+
+            </div>
+
+            <div class="divider"></div>
+
+            <div id="carDetails">
+
+                Fill in the form and click
+                <strong>Predict Price</strong>.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 
